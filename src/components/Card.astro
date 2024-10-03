@@ -1,0 +1,26 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	href: string;
+}
+
+const { href, title, body } = Astro.props;
+---
+
+<li class="link-card">
+	<a href={href}>
+		<slot/>
+	</a>
+</li>
+<style>
+	.link-card {
+		list-style: none;
+		display: flex;
+		padding: 1px;
+		background-color: var(--color-yellow);
+		padding: 1rem;
+		border-radius: 0.5rem;
+	}
+
+</style>

@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="Welcome to Astro.">
+<main>
+  <a href="/">root</a>
+	<reveal-elements>
+		<Card>
+      <p>Hur mår du?</p>
+    </Card>
+		<Card></Card>
+		<Card></Card>
+	</reveal-elements>
+
+  <reveal-elements delay="1">
+		<div>Hej</div>
+		<div>Hej</div>
+		<div>Hej</div>
+		<div>Hej</div>
+		<div>Hej</div>
+		<div>Hej</div>
+		<div>Hej</div>
+		<div>Hej</div>
+		<div>Hej</div>
+		<div>Hej</div>
+		<div>Hej</div>
+	</reveal-elements>
+</main>
+</Layout>
+
+<style>
+  reveal-elements{
+    display: contents;
+  }
+</style>
+
+<script>
+	import '../web-components/examples/reveal-elements';
+</script>
