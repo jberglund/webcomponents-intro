@@ -22,14 +22,14 @@ class ExampleElement extends HTMLElement {
 
   constructor() {
     super();
-
-    const shadow = this.attachShadow({ mode: 'open' });
+    /*
+    const shadow = this.attachShadow({ mode: 'open' }); 
     shadow.innerHTML = `
       <slot></slot>
     `;
-    shadow.adoptedStyleSheets = [styles];
+    shadow.adoptedStyleSheets = [styles]; */
 
-    console.log('constructor');
+    console.log('constructor', this);
   }
 
   connectedCallback() {

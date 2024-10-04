@@ -5,22 +5,17 @@ import Card from '../components/Card.astro';
 
 <Layout title="Welcome to Astro.">
 <main>
-		<a href="/examples">exempel</a>
+	<a href="/examples">exempel</a>
 	<example-element>
 		<div>Hej</div>
 	</example-element>
-	<example-element>
-		<div>Hej</div>
-	</example-element>
-	<button id="clone">clone previous element</button>
-	<face-gen></face-gen>
+	<!-- <button id="clone">clone previous element</button> -->
 </main>
 </Layout>
 
 
 <script>
 	import '../web-components/example-element';
-	import '../web-components/examples/face-gen';
 
 	document.querySelector('button#clone').addEventListener('click', (e) => {
 		const previousElementClone = e.target.previousElementSibling.cloneNode(true);
