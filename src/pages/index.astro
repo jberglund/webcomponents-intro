@@ -1,24 +1,105 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-<main>
-	<a href="/examples">exempel</a>
-	<example-element>
-		<div>Hej</div>
-	</example-element>
-	<!-- <button id="clone">clone previous element</button> -->
-</main>
+<Layout title="Web components!">
+  <mouse-tracker>
+    <main>
+      <div class="grid">
+        <element-center>
+          <fjes-element
+            style="--mouth: 0.4; --mouth-position: -2; --eyes: -0.6;"
+          ></fjes-element>
+        </element-center>
+
+        <element-center style="grid-column: 3; grid-row: 2">
+          <fjes-element></fjes-element>
+        </element-center>
+
+        <element-center style="grid-column: 6; grid-row: 4">
+          <fjes-element
+            style="--mouth-position: 6.6; --mouth: -0.9; --eyes: 0.7;"
+          ></fjes-element>
+        </element-center>
+
+        <element-center
+          style="grid-column-start: 5; grid-row: 1; grid-column-end: span 2"
+        >
+          <fjes-element
+            style="--mouth: 0; --mouth-position: -3.3; --eyes: -0.2;"
+          ></fjes-element>
+        </element-center>
+
+        <element-center style="grid-area: 3 / 2 / span 2 / span 1;">
+          <fjes-element></fjes-element>
+        </element-center>
+      </div>
+      <div class="controls">
+        <bind-css-input variable="--mouth">
+          <div class="input-wrapper">
+            <label for="">Mouth</label>
+            <input type="range" min="-1" max="1" step="0.1" />
+            <input type="number" min="-1" max="1" step="0.1" />
+          </div>
+        </bind-css-input>
+
+        <bind-css-input variable="--mouth-position">
+          <div class="input-wrapper">
+            <label for="">Mouth position</label>
+            <input type="range" min="-10" max="10" step="0.1" />
+            <input type="number" min="-10" max="10" step="0.1" />
+          </div>
+        </bind-css-input>
+
+        <bind-css-input variable="--eyes">
+          <div class="input-wrapper">
+            <label for="">Eyes Length</label>
+            <input type="range" min="-1" max="1" step="0.1" />
+            <input type="number" min="-1" max="1" step="0.1" />
+          </div>
+        </bind-css-input>
+        <bind-css-input variable="--eye-gap-modifier">
+          <div class="input-wrapper">
+            <label for="">Eye gap</label>
+            <input type="range" min="0.1" max="1" step="0.1" />
+            <input type="number" min="0.1" max="1" step="0.1" />
+          </div>
+        </bind-css-input>
+        <!--  <bind-css-input variable="--stroke-dasharray" class="input-wrapper">
+      <label for="">stroke-dasharray</label>
+      <input type="range" name="" id="" />
+      <input type="number" name="" id="" />
+    </bind-css-input> -->
+      </div>
+    </main>
+  </mouse-tracker>
 </Layout>
 
-
 <script>
-	import '../web-components/example-element';
-
-	document.querySelector('button#clone').addEventListener('click', (e) => {
-		const previousElementClone = e.target.previousElementSibling.cloneNode(true);
-		e.target.parentElement.insertBefore(previousElementClone, e.target)
-	});
+  import "../web-components/fjes-element";
+  import "../web-components/examples/bind-css-input";
+  import "../web-components/mouse-tracker";
+  import "../web-components/element-center";
 </script>
+
+<style>
+  .controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .input-wrapper {
+    display: flex;
+    gap: 0.2rem;
+    flex-direction: column;
+  }
+  element-center {
+    display: inline-flex;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 100px);
+    grid-template-rows: repeat(6, 100px);
+  }
+</style>

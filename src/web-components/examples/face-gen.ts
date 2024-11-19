@@ -4,12 +4,12 @@ import {
   spring,
   type AnimationControls,
   inView,
-} from 'motion';
+} from "motion";
 
 class FaceGen extends HTMLElement {
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: 'open' });
+    const shadow = this.attachShadow({ mode: "open" });
     shadow.innerHTML = `
       <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M93 56.5714C93 56.5714 84 87.5 48.9997 87.5C13.9994 87.5 7 55 7 55" stroke="black" stroke-width="10" stroke-linecap="round"/>
@@ -22,7 +22,7 @@ class FaceGen extends HTMLElement {
 </svg>
 
     `;
-    shadow.adoptedStyleSheets = [styles];
+    shadow.adoptedStyleSheets = [styles2];
   }
 
   disconnectedCallback() {}
@@ -30,4 +30,4 @@ class FaceGen extends HTMLElement {
   connectedCallback() {}
 }
 
-customElements.define('face-gen', FaceGen);
+customElements.define("face-gen", FaceGen);

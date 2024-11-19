@@ -11,12 +11,12 @@ class BindInputCss extends HTMLElement {
   cssVariableName: string;
   inputs: NodeListOf<HTMLInputElement>;
   handleFunction = this.handleSteppedInputs;
-  unit = this.getAttribute('unit') || '';
+  unit = this.getAttribute("unit") || "";
 
   connectedCallback() {
     this.inputs.forEach((input) => {
       this.setValueIfCSSPropertyExists();
-      input.addEventListener('input', (event) => {
+      input.addEventListener("input", (event) => {
         if (!(event.target instanceof HTMLInputElement)) return;
 
         this.handleFunction(event.target);
@@ -29,7 +29,7 @@ class BindInputCss extends HTMLElement {
       this.cssVariableName,
       target.value + this.unit
     );
-    if (target.type === 'range' || target.type === 'number') {
+    if (target.type === "range" || target.type === "number") {
       this.syncInputs(target);
     }
   }
@@ -37,7 +37,7 @@ class BindInputCss extends HTMLElement {
   setValueIfCSSPropertyExists() {
     const root = getComputedStyle(this.bindToElement);
     this.inputs.forEach((input) => {
-      if (input.type === 'radio') return;
+      if (input.type === "radio") return;
 
       input.value = root.getPropertyValue(this.cssVariableName);
     });
@@ -53,14 +53,14 @@ class BindInputCss extends HTMLElement {
 
   constructor() {
     super();
-    this.cssVariableName = this.getAttribute('variable') || '';
-    this.inputs = this.querySelectorAll('input');
-    if (!this.cssVariableName.startsWith('--')) {
-      throw new Error('CSS variable name must start with --');
+    this.cssVariableName = this.getAttribute("variable") || "";
+    this.inputs = this.querySelectorAll("input");
+    if (!this.cssVariableName.startsWith("--")) {
+      throw new Error("CSS variable name must start with --");
     }
   }
 }
 
 export default BindInputCss;
 
-customElements.define('bind-input-css', BindInputCss);
+customElements.define("bind-css-input", BindInputCss);
